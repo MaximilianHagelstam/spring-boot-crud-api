@@ -1,13 +1,21 @@
 package com.maximilian.springbootcrudapi.item;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Item {
 
-  private long id;
+  @Id
+  @SequenceGenerator(name = "item_sequence", sequenceName = "item_sequence", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_sequence")
+
+  private Long id;
   private String name;
 
   public Item() {}
 
-  public Item(long id, String name) {
+  public Item(Long id, String name) {
     this.id = id;
     this.name = name;
   }
